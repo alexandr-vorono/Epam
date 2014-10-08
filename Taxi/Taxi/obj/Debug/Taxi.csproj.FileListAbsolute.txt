@@ -1,0 +1,5 @@
+c:\users\александр\documents\visual studio 2012\Projects\Taxi\Taxi\bin\Debug\Taxi.exe.config
+c:\users\александр\documents\visual studio 2012\Projects\Taxi\Taxi\bin\Debug\Taxi.exe
+c:\users\александр\documents\visual studio 2012\Projects\Taxi\Taxi\bin\Debug\Taxi.pdb
+c:\users\александр\documents\visual studio 2012\Projects\Taxi\Taxi\obj\Debug\Taxi.exe
+c:\users\александр\documents\visual studio 2012\Projects\Taxi\Taxi\obj\Debug\Taxi.pdb
