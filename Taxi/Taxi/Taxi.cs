@@ -26,6 +26,16 @@ namespace Taxi
             }
             return summ;
         }
+        public List<Car> SearchCarByMaxSpeed(int MinSpeed, int MaxSpeed)
+        {
+            List<Car> temp = new List<Car>();
+            foreach(var t in list)
+            {
+                if (t.speed > MinSpeed && t.speed < MaxSpeed)
+                temp.Add(t);
+            }
+            return temp;
+        }
         public override String ToString()
         {
             string s = "";
