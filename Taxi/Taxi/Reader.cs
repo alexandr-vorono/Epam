@@ -23,40 +23,36 @@ namespace Taxi
                 {
                     case "Truck":
                         var tempCarT = new Truck();
-                        tempCarT.name = name1;
+                        tempCarT.name = Convert.ToString(el.Element("make").Value);
                         tempCarT.model = Convert.ToString(el.Element("model").Value);
                         tempCarT.speed = Convert.ToInt32(el.Element("speed").Value);
+                        tempCarT.price = Convert.ToInt32(el.Element("price").Value);
                         tempCarT.load = Convert.ToInt32(el.Element("load").Value);
                         qwe.Add(tempCarT);
                         break;
                     case "Bus":
                         var tempCarB = new Bus();
-                        tempCarB.name = name1;
+                        tempCarB.name = Convert.ToString(el.Element("make").Value);
                         tempCarB.model = Convert.ToString(el.Element("model").Value);
                         tempCarB.speed = Convert.ToInt32(el.Element("speed").Value);
+                        tempCarB.price = Convert.ToInt32(el.Element("price").Value);
                         tempCarB.count = Convert.ToInt32(el.Element("count").Value);
                         qwe.Add(tempCarB);
                         break;
                     case "PassengerCar":
                         var tempCarP = new PassengerCar();
-                        tempCarP.name = name1;
+                        tempCarP.name = Convert.ToString(el.Element("make").Value);
                         tempCarP.model = Convert.ToString(el.Element("model").Value);
                         tempCarP.speed = Convert.ToInt32(el.Element("speed").Value);
+                        tempCarP.price = Convert.ToInt32(el.Element("price").Value);
                         tempCarP.obem = Convert.ToInt32(el.Element("obem").Value);
                         qwe.Add(tempCarP);
                         break;
                     default: break;
                 }
             }
-
             var taxi1 = new Taxi() { CarsList = qwe.ToList() };
             taxi = taxi1;
-            //    foreach (string name in query)
-            //    {
-            //      //  taxi.CarsList.Add(name);
-            //        Console.WriteLine("Cars: {0}", name);
-            //    }
         }
-
     }
 }

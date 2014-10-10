@@ -11,18 +11,21 @@ namespace Taxi
         public string name { get; set; }
         public string model { get; set; }
         public int speed { get; set; }
+        public int price { get; set; }
 
         public Car() { }
-        public Car(string name, string model, int speed)
+        public Car(string name, string model, int speed, int price)
         {
             this.name = name;
             this.model = model;
             this.speed = speed;
+            this.price = price;
         }
 
         protected String Info()
         {
-            return "\nТип:" + this.name.ToString() + "\n Модель:" + this.model.ToString() + "\n Максимальная скорость:" + this.speed.ToString();
+            return "\nНазвание:" + this.name.ToString() + "\nМодель:" + this.model.ToString() +
+                "\nМаксимальная скорость:" + this.speed.ToString() + "\nЦена:" + this.price.ToString();
         }
     }
 }

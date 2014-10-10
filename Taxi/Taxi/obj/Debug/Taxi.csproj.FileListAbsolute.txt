@@ -8,3 +8,4 @@ C:\Users\Александр\Documents\Visual Studio 2012\Projects\йцу\Taxi\Ta
 C:\Users\Александр\Documents\Visual Studio 2012\Projects\йцу\Taxi\Taxi\obj\Debug\Taxi.pdb
 C:\Users\Александр\Documents\Visual Studio 2012\Projects\йцу\Taxi\Taxi\bin\Debug\Taxi.exe
 C:\Users\Александр\Documents\Visual Studio 2012\Projects\йцу\Taxi\Taxi\bin\Debug\Taxi.pdb
+C:\Users\Александр\Documents\Visual Studio 2012\Projects\йцу\Taxi\Taxi\obj\Debug\Taxi.csprojResolveAssemblyReference.cache

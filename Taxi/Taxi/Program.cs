@@ -17,8 +17,10 @@ namespace Taxi
             Taxi list = new Taxi();
             Reader read = new Reader();
             read.ReaderFile(ref list, "data.xml");
-            // list.Sort();
+            Console.WriteLine("Все автомобили.");
             Console.WriteLine(list);
+            Console.WriteLine("Общая стоимость:");
+            Console.WriteLine(list.TotalCoast());
             writer();
         }
 

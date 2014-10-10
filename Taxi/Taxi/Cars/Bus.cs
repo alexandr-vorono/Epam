@@ -11,14 +11,14 @@ namespace Taxi
         public int count { get; set; }
 
         public Bus() : base() { }
-        public Bus(string name, string model, int speed, int count) :
-            base(name, model, speed)
+        public Bus(string name, string model, int speed, int price, int count) :
+            base(name, model, speed, price)
         {
             this.count = count;
         }
         public override String ToString()
         {
-            return "Автобус:" + Info() + "Количество пассажиров:" + this.count.ToString();
+            return "Автобус:" + Info() + "\nКоличество пассажиров:" + this.count.ToString() + "\n";
         }
     }
 }
