@@ -20,7 +20,7 @@ namespace Taxi
         {
             string s = "";
             foreach (var t in list)
-                s += "\n" + t.name + "\n" + t.model;
+                s += "\n" + t;
             return s;
         }
     }

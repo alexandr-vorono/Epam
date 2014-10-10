@@ -3,3 +3,8 @@ c:\users\александр\documents\visual studio 2012\Projects\Taxi\Taxi\bin\
 c:\users\александр\documents\visual studio 2012\Projects\Taxi\Taxi\bin\Debug\Taxi.pdb
 c:\users\александр\documents\visual studio 2012\Projects\Taxi\Taxi\obj\Debug\Taxi.exe
 c:\users\александр\documents\visual studio 2012\Projects\Taxi\Taxi\obj\Debug\Taxi.pdb
+C:\Users\Александр\Documents\Visual Studio 2012\Projects\йцу\Taxi\Taxi\bin\Debug\Taxi.exe.config
+C:\Users\Александр\Documents\Visual Studio 2012\Projects\йцу\Taxi\Taxi\obj\Debug\Taxi.exe
+C:\Users\Александр\Documents\Visual Studio 2012\Projects\йцу\Taxi\Taxi\obj\Debug\Taxi.pdb
+C:\Users\Александр\Documents\Visual Studio 2012\Projects\йцу\Taxi\Taxi\bin\Debug\Taxi.exe
+C:\Users\Александр\Documents\Visual Studio 2012\Projects\йцу\Taxi\Taxi\bin\Debug\Taxi.pdb

@@ -3,21 +3,26 @@
   <taxi type="Truck">
     <model>53</model>
     <speed>120</speed>
+    <load>10</load>
   </taxi>
-  <taxi type="Газ53">
-    <model>53</model>
+  <taxi type="Truck">
+    <model>54</model>
     <speed>80</speed>
+    <load>10</load>
   </taxi>
-  <taxi type="Икарус">
+  <taxi type="Bus">
     <model>100</model>
     <speed>100</speed>
+    <count>25</count>
   </taxi>
-  <taxi type="маз">
+  <taxi type="PassengerCar">
     <model>54</model>
     <speed>90</speed>
+    <obem>12</obem>
   </taxi>
-  <taxi type="ывап">
+  <taxi type="Bus">
     <model>52</model>
     <speed>130</speed>
+    <count>55</count>
   </taxi>
 </book>

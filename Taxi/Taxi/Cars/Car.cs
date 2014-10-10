@@ -6,24 +6,23 @@ using System.Threading.Tasks;
 
 namespace Taxi
 {
-    public class Car
+    public abstract class Car
     {
         public string name { get; set; }
-        public int model { get; set; }
+        public string model { get; set; }
         public int speed { get; set; }
 
         public Car() { }
-        public Car(string name, int model, int speed)
+        public Car(string name, string model, int speed)
         {
             this.name = name;
             this.model = model;
             this.speed = speed;
-            Console.WriteLine("sfgsdfgsdfgsdfgsdfg");
         }
 
         protected String Info()
         {
-            return "\n\n\n bvz" + this.name.ToString();
+            return "\nТип:" + this.name.ToString() + "\n Модель:" + this.model.ToString() + "\n Максимальная скорость:" + this.speed.ToString();
         }
     }
 }
