@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Xml;
 using System.Xml.Linq;
 
 
@@ -11,7 +10,7 @@ namespace Taxi
 {
     public class Reader
     {
-        public void ReaderFile(ref Taxi taxi, string fileName = "data.xml")
+        public void ReaderFile(ref TaxiStation taxi, string fileName = "data.xml")
         {
             var xml = XDocument.Load(fileName);
             var qwe = new List<Car>();
@@ -23,35 +22,35 @@ namespace Taxi
                 {
                     case "Truck":
                         var tempCarT = new Truck();
-                        tempCarT.name = Convert.ToString(el.Element("make").Value);
-                        tempCarT.model = Convert.ToString(el.Element("model").Value);
-                        tempCarT.speed = Convert.ToInt32(el.Element("speed").Value);
-                        tempCarT.price = Convert.ToInt32(el.Element("price").Value);
-                        tempCarT.load = Convert.ToInt32(el.Element("load").Value);
+                        tempCarT.Make = Convert.ToString(el.Element("make").Value);
+                        tempCarT.Model = Convert.ToString(el.Element("model").Value);
+                        tempCarT.Speed = Convert.ToInt32(el.Element("speed").Value);
+                        tempCarT.Price = Convert.ToInt32(el.Element("price").Value);
+                        tempCarT.Load = Convert.ToInt32(el.Element("load").Value);
                         qwe.Add(tempCarT);
                         break;
                     case "Bus":
                         var tempCarB = new Bus();
-                        tempCarB.name = Convert.ToString(el.Element("make").Value);
-                        tempCarB.model = Convert.ToString(el.Element("model").Value);
-                        tempCarB.speed = Convert.ToInt32(el.Element("speed").Value);
-                        tempCarB.price = Convert.ToInt32(el.Element("price").Value);
-                        tempCarB.count = Convert.ToInt32(el.Element("count").Value);
+                        tempCarB.Make = Convert.ToString(el.Element("make").Value);
+                        tempCarB.Model = Convert.ToString(el.Element("model").Value);
+                        tempCarB.Speed = Convert.ToInt32(el.Element("speed").Value);
+                        tempCarB.Price = Convert.ToInt32(el.Element("price").Value);
+                        tempCarB.Count = Convert.ToInt32(el.Element("count").Value);
                         qwe.Add(tempCarB);
                         break;
                     case "PassengerCar":
                         var tempCarP = new PassengerCar();
-                        tempCarP.name = Convert.ToString(el.Element("make").Value);
-                        tempCarP.model = Convert.ToString(el.Element("model").Value);
-                        tempCarP.speed = Convert.ToInt32(el.Element("speed").Value);
-                        tempCarP.price = Convert.ToInt32(el.Element("price").Value);
-                        tempCarP.obem = Convert.ToInt32(el.Element("obem").Value);
+                        tempCarP.Make = Convert.ToString(el.Element("make").Value);
+                        tempCarP.Model = Convert.ToString(el.Element("model").Value);
+                        tempCarP.Speed = Convert.ToInt32(el.Element("speed").Value);
+                        tempCarP.Price = Convert.ToInt32(el.Element("price").Value);
+                        tempCarP.EngineVolume = Convert.ToDouble(el.Element("engineVolume").Value);
                         qwe.Add(tempCarP);
                         break;
                     default: break;
                 }
             }
-            var taxi1 = new Taxi() { CarsList = qwe.ToList() };
+            var taxi1 = new TaxiStation() { CarsList = qwe.ToList() };
             taxi = taxi1;
         }
     }

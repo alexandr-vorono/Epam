@@ -1,38 +1,37 @@
-﻿<book genre="novel" ISBN="1-861001-57-5">
-  <title>Pride And Prejudice</title>
+﻿<Taxi>
   <taxi type="Truck">
+    <load>4500</load>
     <make>Газ</make>
     <model>53</model>
     <speed>90</speed>
     <price>5000</price>
-    <load>4500</load>
   </taxi>
   <taxi type="Truck">
+    <load>2500</load>
     <make>Газ</make>
     <model>52</model>
     <speed>70</speed>
     <price>4000</price>
-    <load>2500</load>
   </taxi>
   <taxi type="Bus">
+    <count>180</count>
     <make>Икарус</make>
     <model>270</model>
     <speed>70</speed>
     <price>6000</price>
-    <count>180</count>
   </taxi>
   <taxi type="PassengerCar">
+    <engineVolume>2000</engineVolume>
     <make>Volvo</make>
     <model>S60</model>
     <speed>220</speed>
     <price>8000</price>
-    <obem>2000</obem>
   </taxi>
   <taxi type="Bus">
+    <count>150</count>
     <make>Маз</make>
     <model>107</model>
     <speed>70</speed>
     <price>15000</price>
-    <count>150</count>
   </taxi>
-</book>
+</Taxi>

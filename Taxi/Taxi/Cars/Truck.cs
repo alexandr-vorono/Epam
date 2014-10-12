@@ -8,17 +8,17 @@ namespace Taxi
 {
     public class Truck : Car
     {
-        public int load { get; set; }
+        public int Load { get; set; }
 
         public Truck() : base() { }
-        public Truck(string name, string model, int speed, int price, int load) :
-            base(name, model, speed, price)
+        public Truck(string make, string model, int speed, int price, int load) :
+            base(make, model, speed, price)
         {
-            this.load = load;
+            this.Load = load;
         }
         public override String ToString()
         {
-            return "Грузовой:" + Info() + "\n" + "Грузоподъёмность:" + this.load.ToString() + "\n";
+            return "Грузовой:" + Info() + "\n" + "Грузоподъёмность:" + this.Load.ToString() + "\n";
         }
     }
 }

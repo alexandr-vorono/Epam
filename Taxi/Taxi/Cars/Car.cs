@@ -8,24 +8,24 @@ namespace Taxi
 {
     public abstract class Car
     {
-        public string name { get; set; }
-        public string model { get; set; }
-        public int speed { get; set; }
-        public int price { get; set; }
+        public string Make { get; set; }
+        public string Model { get; set; }
+        public int Speed { get; set; }
+        public int Price { get; set; }
 
         public Car() { }
         public Car(string name, string model, int speed, int price)
         {
-            this.name = name;
-            this.model = model;
-            this.speed = speed;
-            this.price = price;
+            this.Make = name;
+            this.Model = model;
+            this.Speed = speed;
+            this.Price = price;
         }
 
         protected String Info()
         {
-            return "\nНазвание:" + this.name.ToString() + "\nМодель:" + this.model.ToString() +
-                "\nМаксимальная скорость:" + this.speed.ToString() + "\nЦена:" + this.price.ToString();
+            return "\nНазвание:" + this.Make.ToString() + "\nМодель:" + this.Model.ToString() +
+                "\nМаксимальная скорость:" + this.Speed.ToString() + "\nЦена:" + this.Price.ToString();
         }
     }
 }
