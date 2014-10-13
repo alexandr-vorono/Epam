@@ -8,8 +8,15 @@ using System.Xml;
 
 namespace Taxi
 {
+    /// <summary>
+    /// Класс для сохрание в xml  файл
+    /// </summary>
     class Writer
     {
+        /// <summary>
+        /// Сохранение в xml файл
+        /// </summary>
+        /// <param name="taxiStation">Объект таксопарка</param>
         public void WriteFile(ref TaxiStation taxiStation)
         {
             XmlDocument doc = new XmlDocument();

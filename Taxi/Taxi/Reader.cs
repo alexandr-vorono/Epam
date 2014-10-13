@@ -8,9 +8,17 @@ using System.Xml.Linq;
 
 namespace Taxi
 {
+    /// <summary>
+    /// Класс чтения из  xml файла.
+    /// </summary>
     public class Reader
     {
-        public void ReaderFile(ref TaxiStation taxi, string fileName = "data.xml")
+        /// <summary>
+        /// Чтение из  xml файла.
+        /// </summary>
+        /// <param name="taxi">Объект таксопарка.</param>
+        /// <param name="fileName">Название файла.</param>
+        public void ReaderFile(ref TaxiStation taxi, string fileName)
         {
             var xml = XDocument.Load(fileName);
             var qwe = new List<Car>();

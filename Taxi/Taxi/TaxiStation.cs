@@ -8,7 +8,9 @@ namespace Taxi
 {
     public class TaxiStation
     {
-
+        /// <summary>
+        /// Список Транспортных  средств.
+        /// </summary>
         private List<Car> carList = new List<Car>();
 
         public List<Car> CarsList
@@ -16,7 +18,10 @@ namespace Taxi
             get { return carList; }
             set { carList = value; }
         }
-
+        /// <summary>
+        /// Определение общей стоимости таксопарка.
+        /// </summary>
+        /// <returns>Общая стоимость.</returns>
         public int TotalCoast()
         {
             int summ = 0;
@@ -26,6 +31,12 @@ namespace Taxi
             }
             return summ;
         }
+        /// <summary>
+        /// Поиск транспорта по максимальной скорости.
+        /// </summary>
+        /// <param name="MinSpeed">Максимальная скорость от.</param>
+        /// <param name="MaxSpeed">Максимальная скорость до.</param>
+        /// <returns>Список транспортных средств.</returns>
         public List<Car> searchCarByMaxSpeed(int MinSpeed, int MaxSpeed)
         {
             List<Car> temp = new List<Car>();
@@ -36,6 +47,10 @@ namespace Taxi
             }
             return temp;
         }
+        /// <summary>
+        ///Возвращает  строку с описанием таксопарка .
+        /// </summary>
+        /// <returns>Строка с описанием таксопарка.</returns>
         public override String ToString()
         {
             string s = "";
@@ -43,6 +58,10 @@ namespace Taxi
                 s += t + "\n";
             return s;
         }
+        /// <summary>
+        /// Добавление транспорта в список.
+        /// </summary>
+        /// <returns>Список всех транспортных средств таксопарка.</returns>
         public List<Car> addToFile()
         {
             

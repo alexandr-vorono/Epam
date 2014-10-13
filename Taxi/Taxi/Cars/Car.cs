@@ -12,11 +12,20 @@ namespace Taxi
         public string Model { get; set; }
         public int Speed { get; set; }
         public int Price { get; set; }
-
+        /// <summary>
+        /// Конструктор по  умолчанию
+        /// </summary>
         public Car() { }
-        public Car(string name, string model, int speed, int price)
+        /// <summary>
+        /// Конструктор  с параметрами
+        /// </summary>
+        /// <param name="make">Марка</param>
+        /// <param name="model">Модель</param>
+        /// <param name="speed">Максимальная скорость</param>
+        /// <param name="price">Цена</param>
+        public Car(string make, string model, int speed, int price)
         {
-            this.Make = name;
+            this.Make = make;
             this.Model = model;
             this.Speed = speed;
             this.Price = price;
