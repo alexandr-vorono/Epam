@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Taxi.Cars;
 
 namespace Taxi
 {
@@ -11,12 +12,12 @@ namespace Taxi
         /// <summary>
         /// Список Транспортных  средств.
         /// </summary>
-        private List<Car> carList = new List<Car>();
+        private List<Car> _carList = new List<Car>();
 
         public List<Car> CarsList
         {
-            get { return carList; }
-            set { carList = value; }
+            get { return _carList; }
+            set { _carList = value; }
         }
         /// <summary>
         /// Определение общей стоимости таксопарка.
@@ -24,49 +25,41 @@ namespace Taxi
         /// <returns>Общая стоимость.</returns>
         public int TotalCoast()
         {
-            int summ = 0;
-            foreach (var t in carList)
-            {
-                summ += t.Price;
-            }
-            return summ;
+            return _carList.Sum(t => t.Price);
+            // return carList.Sum(e => e.Price);
         }
+
         /// <summary>
         /// Поиск транспорта по максимальной скорости.
         /// </summary>
-        /// <param name="MinSpeed">Максимальная скорость от.</param>
-        /// <param name="MaxSpeed">Максимальная скорость до.</param>
+        /// <param name="minSpeed">Максимальная скорость от.</param>
+        /// <param name="maxSpeed">Максимальная скорость до.</param>
         /// <returns>Список транспортных средств.</returns>
-        public List<Car> searchCarByMaxSpeed(int MinSpeed, int MaxSpeed)
+        public List<Car> SearchCarByMaxSpeed(int minSpeed, int maxSpeed)
         {
-            List<Car> temp = new List<Car>();
-            foreach(var t in carList)
-            {
-                if (t.Speed > MinSpeed && t.Speed < MaxSpeed)
-                temp.Add(t);
-            }
-            return temp;
+            return _carList.Where(t => t.Speed > minSpeed && t.Speed < maxSpeed).ToList();
         }
+
         /// <summary>
         ///Возвращает  строку с описанием таксопарка .
         /// </summary>
         /// <returns>Строка с описанием таксопарка.</returns>
         public override String ToString()
         {
+            return _carList.Aggregate("", (current, t) => current + (t + "\n"));
             string s = "";
-            foreach (var t in carList)
+            foreach (Car t in _carList)
                 s += t + "\n";
             return s;
         }
+
         /// <summary>
         /// Добавление транспорта в список.
         /// </summary>
         /// <returns>Список всех транспортных средств таксопарка.</returns>
-        public List<Car> addToFile()
+        public List<Car> AddToFile()
         {
-            
-            List<Car> temp = new List<Car>();
-            temp = CarsList;
+            List<Car> temp = CarsList;
             int countList = temp.Count();
             Console.WriteLine("Введите тип транспорта(Truck/Bus/PassengerCar):");
             string type = Console.ReadLine();

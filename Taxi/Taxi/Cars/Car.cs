@@ -15,7 +15,7 @@ namespace Taxi
         /// <summary>
         /// Конструктор по  умолчанию
         /// </summary>
-        public Car() { }
+        protected Car() { }
         /// <summary>
         /// Конструктор  с параметрами
         /// </summary>
@@ -23,7 +23,7 @@ namespace Taxi
         /// <param name="model">Модель</param>
         /// <param name="speed">Максимальная скорость</param>
         /// <param name="price">Цена</param>
-        public Car(string make, string model, int speed, int price)
+        protected Car(string make, string model, int speed, int price)
         {
             this.Make = make;
             this.Model = model;
@@ -33,6 +33,7 @@ namespace Taxi
 
         protected String Info()
         {
+           // string.Format("\nНазвание: {0}", this.Make);
             return "\nНазвание:" + this.Make.ToString() + "\nМодель:" + this.Model.ToString() +
                 "\nМаксимальная скорость:" + this.Speed.ToString() + "\nЦена:" + this.Price.ToString();
         }

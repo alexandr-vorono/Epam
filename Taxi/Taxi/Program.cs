@@ -19,15 +19,14 @@ namespace Taxi
             Console.WriteLine("Общая стоимость:");
             Console.WriteLine(taxiStation.TotalCoast() + "\n");
             Console.WriteLine("Транспорт подходящий условиям:");
-            List<Car> temp = new List<Car>();
-            temp = taxiStation.searchCarByMaxSpeed(60, 100);
+            List<Car> temp = taxiStation.SearchCarByMaxSpeed(60, 100);
             foreach(var t in temp)
                 Console.WriteLine(t+"\n") ;
            
             Console.WriteLine("Добавить(y/n)?");
             if (Console.ReadLine() == "y")
             {
-                taxiStation.addToFile();
+                taxiStation.AddToFile();
                 var writer = new Writer();
                 writer.WriteFile(ref taxiStation);
             }

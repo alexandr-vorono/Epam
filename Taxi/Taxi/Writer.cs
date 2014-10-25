@@ -5,6 +5,7 @@ using System.IO;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
+using Taxi.Cars;
 
 namespace Taxi
 {
@@ -19,7 +20,7 @@ namespace Taxi
         /// <param name="taxiStation">Объект таксопарка</param>
         public void WriteFile(ref TaxiStation taxiStation)
         {
-            XmlDocument doc = new XmlDocument();
+            var doc = new XmlDocument();
             doc.LoadXml("<Taxi>" + "</Taxi>");
             foreach (var t in taxiStation.CarsList)
             {
