@@ -15,7 +15,7 @@ namespace Concordance
            
             var parser = new Parser();
             var res = parser.Parsers(va);
-          //  res.
+            res.Result();
             Console.ReadKey();
         }
     }

@@ -20,8 +20,8 @@ namespace Concordance
                 MatchCollection match = newReg.Matches(result);
                 foreach (var mat in match)
                 {
-                    list.addWord(mat.ToString());
-                    Console.WriteLine(mat + "  "+i);
+                    list.AddWord(mat.ToString(), i);
+                   // Console.WriteLine(mat + "  "+i);
 
                 }
 

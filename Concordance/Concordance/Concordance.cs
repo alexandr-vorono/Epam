@@ -8,11 +8,27 @@ namespace Concordance
 {
     class Concordance
     {
-        private List<string> _words = new List<string>();
+        private List<Word> _words = new List<Word>();
 
-        public void addWord(string math)
+        public void AddWord(string math, int position)
         {
-            _words.Add(math);
+            Word searchWord = _words.Find(x => x.GetWord().Equals(math));
+            if(searchWord==null)
+            {
+                _words.Add(new Word(math, position));
+            }
+            else
+            {
+                searchWord.AddPosition(position);
+            }
+        }
+
+        public void Result()
+        {
+            foreach (var word in _words)
+            {
+                Console.WriteLine(word.GetWord() + " " + word.GetCount());
+            }
         }
     }
 }

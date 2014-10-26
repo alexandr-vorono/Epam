@@ -10,8 +10,7 @@ namespace Taxi
     {
         public double EngineVolume { get; set; }
 
-        public PassengerCar()
-        { }
+        public PassengerCar(){ }
         /// <summary>
         /// Конструктор с параметрами
         /// </summary>
