@@ -1,10 +1,15 @@
-qwert   יצףךךי	
+qwert  
+יצףךךי	
 qwert
 qwert
-asdf  אצףא
-zcv פûגאפû
-tyui פûגאפûג
-ghj    פûגאפûגא
+asdf  
+אצףא
+zcv 
+פûגאפû
+tyui 
+פûגאפûג
+ghj    
+פûגאפûגא
 bnm גûא
 iopפûגא
 jkl ûגאפûג

@@ -20,13 +20,9 @@ namespace Concordance
                 MatchCollection match = newReg.Matches(result);
                 foreach (var mat in match)
                 {
-                    list.AddWord(mat.ToString(), i);
-                   // Console.WriteLine(mat + "  "+i);
-
+                    list.AddWord(mat.ToString(), i/10 + 1);
                 }
-
             }
-
             return list;
         }
     }

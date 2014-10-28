@@ -12,6 +12,12 @@ namespace Concordance
         private int count;
         private List<int> Position = new List<int>();
 
+        public List<int> Posit
+        {
+            get { return Position; }
+            set { Position = value; }
+        }
+
         public string GetWord()
         {
             return word;
@@ -25,6 +31,7 @@ namespace Concordance
         public void AddPosition(int position)
         {
             count++;
+            if(Position.Contains(position) == false)
             Position.Add(position);
         }
 
