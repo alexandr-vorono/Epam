@@ -9,14 +9,19 @@ namespace Concordance
 {
     class Parser
     {
-        public Concordance Parsers(string[] va)
+        /// <summary>
+        /// Метод парсит строку
+        /// </summary>
+        /// <param name="str">Строка</param>
+        /// <returns>Список слов</returns>
+        public Concordance Parsers(string[] str)
         {
             string result;
             Concordance list = new Concordance();
             var newReg = new Regex("[a-zа-я]+-?[а-яa-z]*");
-            for (int i = 0; i < va.Count(); i++)
+            for (int i = 0; i < str.Count(); i++)
             {
-                result = va[i].ToLower();
+                result = str[i].ToLower();
                 MatchCollection match = newReg.Matches(result);
                 foreach (var mat in match)
                 {

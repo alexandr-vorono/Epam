@@ -11,7 +11,15 @@ namespace Concordance
     {
         public string[] Read()
         {
-            string[] mass = File.ReadAllLines("test.txt", Encoding.Default);
+            string[] mass = {};
+            try
+            {
+                mass = File.ReadAllLines("test.txt", Encoding.Default);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Exception:" + e.Message);
+            }
             return mass;
         }
     }

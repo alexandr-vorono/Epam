@@ -10,12 +10,19 @@ namespace Concordance
     {
         static void Main(string[] args)
         {
-            var str = new Reader();
-            var va = str.Read();
+            var read = new Reader();
+            var str = read.Read();
            
             var parser = new Parser();
-            var res = parser.Parsers(va);
-            res.Result();
+            Concordance concordance = parser.Parsers(str);
+
+            Result result = new Result();
+            string res = result.Results(concordance);
+            Console.WriteLine(res);
+
+            Writer writer = new Writer();
+            writer.Write(res);
+
             Console.ReadKey();
         }
     }
