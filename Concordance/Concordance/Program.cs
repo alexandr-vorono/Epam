@@ -17,7 +17,7 @@ namespace Concordance
             Concordance concordance = parser.Parsers(str);
 
             Result result = new Result();
-            string res = result.Results(concordance);
+            StringBuilder res = result.Results(concordance);
             Console.WriteLine(res);
 
             Writer writer = new Writer();

@@ -9,11 +9,11 @@ namespace Concordance
     public class Word
     {
         //Слово
-        private string word;
+        private string _word;
         //Количество  повторений слова в тексте
-        private int count;
+        private int _count;
         //Список позиций слов в тексте
-        private List<int> Position = new List<int>();
+        private List<int> _position = new List<int>();
 
         
         /// <summary>
@@ -22,7 +22,7 @@ namespace Concordance
         /// <returns>Слово</returns>
         public string GetWord()
         {
-            return word;
+            return _word;
         }
         /// <summary>
         /// Метод  возвращает список позиции слов в тексте
@@ -30,7 +30,7 @@ namespace Concordance
         /// <returns></returns>
         public List<int> GetPosition()
         {
-            return Position;
+            return _position;
         }
 
         /// <summary>
@@ -39,7 +39,7 @@ namespace Concordance
         /// <returns>Количество повторений</returns>
         public int GetCount()
         {
-            return count;
+            return _count;
         }
         /// <summary>
         /// Метод добавления позиции и подсчета количества повторений
@@ -47,9 +47,9 @@ namespace Concordance
         /// <param name="position">Позиция</param>
         public void AddPosition(int position)
         {
-            count++;
-            if(Position.Contains(position) == false)
-            Position.Add(position);
+            _count++;
+            if(_position.Contains(position) == false)
+            _position.Add(position);
         }
         /// <summary>
         /// Конструктор  с параметрами
@@ -58,9 +58,9 @@ namespace Concordance
         /// <param name="position">Позиция</param>
         public Word(string word, int position)
         {
-            this.word = word;
-            count = 1;
-            Position.Add(position);
+            this._word = word;
+            _count = 1;
+            _position.Add(position);
         }
     }
 }

@@ -14,7 +14,7 @@ namespace Concordance
             string[] mass = {};
             try
             {
-                mass = File.ReadAllLines("test.txt", Encoding.Default);
+                mass = File.ReadAllLines("../../Files/test.txt", Encoding.Default);
             }
             catch (Exception e)
             {

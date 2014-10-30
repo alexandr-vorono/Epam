@@ -13,24 +13,26 @@ namespace Concordance
         /// </summary>
         /// <param name="concordance">Конкорданс</param>
         /// <returns>Строка-результат</returns>
-        public string Results(Concordance concordance)
+        public StringBuilder Results(Concordance concordance)
         {
             var wordQuery =
-            from word in concordance.GetWords()
-            group word by word.GetWord()[0] into wordGroup
-            orderby wordGroup.Key
-            select wordGroup;
-            string result = "";
-            foreach (var groupOfWords in wordQuery)
+                from word in concordance.GetWords()
+                orderby word.GetWord()
+                select word; 
+            var resultBuilder = new StringBuilder();
+            string letter2 = "";
+            foreach (var word in wordQuery)
             {
-                result += string.Format("{0} \n", groupOfWords.Key.ToString().ToUpper());
-                foreach (var word in groupOfWords)
+                string letter = word.GetWord().Substring(0, 1).ToUpper();
+                if (letter != letter2)
                 {
-                    result += string.Format("{0} {1}:{2} \n\n", word.GetWord(), word.GetCount(),
-                    word.GetPosition().Aggregate("", (current, temp) => current + (temp + " ")));
+                    resultBuilder.Append("\n" + letter + "\n");
+                    letter2 = letter;
                 }
+                resultBuilder.Append(word.GetWord() + " " + word.GetCount() + ":" +
+                        word.GetPosition().Aggregate(" ", (current, temp) => current + (temp + " ")) + "\n");
             }
-            return result;
+            return resultBuilder;
         }
     }
 }

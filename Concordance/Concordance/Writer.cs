@@ -13,11 +13,11 @@ namespace Concordance
         /// Метод записи в файл
         /// </summary>
         /// <param name="result">Строка которую надо  записать</param>
-        public void Write(string result)
+        public void Write(StringBuilder result)
         {
             try
             {
-                StreamWriter writer = new StreamWriter("ouput.txt");
+                StreamWriter writer = new StreamWriter("../../Files/ouput.txt");
                 writer.WriteLine(result);
                 writer.Close();
             }
