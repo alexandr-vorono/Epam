@@ -6,11 +6,12 @@ using System.Threading.Tasks;
 
 namespace ATS
 {
-    public enum PortState
+    public enum CallResult
     {
-        Connected,
-        Disconnected,
-        Busy,
-        InputCall
+        Success,
+        Fail,
+        NoConected,
+        CalledSubscriberBusy,
+        NotAnswer
     }
 }
