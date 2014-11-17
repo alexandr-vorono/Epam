@@ -9,7 +9,7 @@ namespace ATS
 {
     public class Terminal
     {
-        private int polu4atel;
+        private int opponentNumber;
         public Port Port { get; set; }
         private bool isCallInitiator = false;
         public Terminal(Port port)
@@ -34,7 +34,7 @@ namespace ATS
                     case PortState.Connected:
                         Console.WriteLine("Абонент " + Port.PhoneNumber
                         + " звонит абоненту " + receiveNumber);
-                        polu4atel = receiveNumber;
+                        opponentNumber = receiveNumber;
                         isCallInitiator = true;
                         this.Port.State = PortState.Busy;
                         OnCallToEvent(Port.PhoneNumber, receiveNumber);
@@ -59,7 +59,7 @@ namespace ATS
         public void IncomingCall(int incomingNumber)
         {
             Port.State = PortState.InputCall;
-            this.polu4atel = incomingNumber;
+            this.opponentNumber = incomingNumber;
             isCallInitiator = false;
         }
 
@@ -68,7 +68,7 @@ namespace ATS
             if (Port.State == PortState.InputCall)
             {
                 this.Port.State = PortState.Busy;
-                OnAnswerCallToEvent(polu4atel, Port.PhoneNumber);
+                OnAnswerCallToEvent(opponentNumber, Port.PhoneNumber);
                 Console.WriteLine("Абонент  {0}  ответил ", Port.PhoneNumber);
             }
         }
@@ -86,11 +86,11 @@ namespace ATS
             if (Port.State == PortState.Busy)
             {
                 if (isCallInitiator)
-                    OnEndCallToEvent(Port.PhoneNumber, polu4atel);
+                    OnEndCallToEvent(Port.PhoneNumber, opponentNumber);
                 else
-                    OnEndCallToEvent(polu4atel, Port.PhoneNumber);
+                    OnEndCallToEvent(opponentNumber, Port.PhoneNumber);
                 isCallInitiator = false;
-                Console.WriteLine("Звонок между {0} и {1} завершен", Port.PhoneNumber, polu4atel);
+                Console.WriteLine("Звонок между {0} и {1} завершен", Port.PhoneNumber, opponentNumber);
             }
         }
         public virtual void OnEndCallToEvent(int output, int input)

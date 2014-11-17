@@ -8,13 +8,21 @@ namespace ATS
 {
     public class Call
     {
+        //Вызывающий
         public Client FromClient { get; set; }
+        //Вызываемый
         public Client ToClient { get; set; }
+        //Время начала вызова
         public DateTime StartCallTime { get; set; }
+        //Время начала разговора
         public DateTime StartTalkTime { get; set; }
+        //Время завершения звонка
         public DateTime EndCallTime { get; set; }
+        //Результат звонка
         public CallResult CallResult { get; set; }
+        //Начат ли разговор
         public bool IsStartTalk { get; set; }
+        //Завершен  ли звонок
         public bool IsEndCall { get; set; }
         /// <summary>
         /// Конструктор

@@ -12,7 +12,11 @@ namespace ATS
         public PortState State { get; set; }
         //Телефонный номер абонента.
         public int PhoneNumber { get; set; }
-
+        /// <summary>
+        /// Конструктор  с параметрами
+        /// </summary>
+        /// <param name="phoneNumber">Номер телефна</param>
+        /// <param name="state">Статус порта</param>
         public Port(int phoneNumber, PortState state)
         {
             this.State = state;
