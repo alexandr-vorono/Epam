@@ -26,7 +26,7 @@ namespace ATS
                 ats.ClientsList.Last().Terminal.EndCallToEvent += ats.EndCallHandler;
             }
 
-            for (int i = 0; i < 500; i++)
+            for (int i = 0; i < 1000; i++)
             {
                 int n = random.Next(1, 11);
                 int from = random.Next(0, 10);

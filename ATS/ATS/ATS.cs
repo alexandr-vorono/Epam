@@ -7,20 +7,34 @@ using System.Threading.Tasks;
 namespace ATS
 {
     public class ATS
-    {
+    {  
+        //Список клиентов
         public List<Client> ClientsList { get; set; }
+        //Список звонков
         public List<Call> CallList { get; set; }
+        /// <summary>
+        /// Конструктор
+        /// </summary>
         public ATS()
         {
             ClientsList = new List<Client>();
             CallList = new List<Call>();
         }
-
+        /// <summary>
+        /// Метод поиска клиента по его номеру
+        /// </summary>
+        /// <param name="number">Номер телефона</param>
+        /// <returns>Клиент</returns>
         public Client FindClientByPhoneNumber(int number)
         {
             return ClientsList.Find(x => x.Terminal.Port.PhoneNumber == number);
         }
-
+        /// <summary>
+        /// Поиск звонка по номерам разговаривающтх
+        /// </summary>
+        /// <param name="otput"> Номер вызывающего</param>
+        /// <param name="input">Номер вызываемого</param>
+        /// <returns>Вызов</returns>
         public Call FindCallByPhoneNumber(int otput, int input)
         {
             try
@@ -34,42 +48,54 @@ namespace ATS
                 return null;
             }
         }
-
-        public void CallToHandler(int ishod, int vhod)
+        /// <summary>
+        /// Обработчик события исходящего звонка
+        /// </summary>
+        /// <param name="output">Номер вызывающего</param>
+        /// <param name="input">Номер  вызываемого</param>
+        public void CallToHandler(int output, int input)
         {
-            Client ishodClient = FindClientByPhoneNumber(ishod);
-            Client vhodClient = FindClientByPhoneNumber(vhod);
+            Client outputClient = FindClientByPhoneNumber(output);
+            Client inputClient = FindClientByPhoneNumber(input);
             Call call = new Call()
             {
-                FromClient = ishodClient,
-                ToClient = vhodClient
+                FromClient = outputClient,
+                ToClient = inputClient
             };
-            switch (vhodClient.Terminal.Port.State)
+            switch (inputClient.Terminal.Port.State)
             {
                 case PortState.Connected:
-                    vhodClient.Terminal.IncomingCall(ishod);
+                    inputClient.Terminal.IncomingCall(output);
                     call.StartTalk();
                     break;
                 case PortState.Busy:
                 case PortState.InputCall:
                     Console.WriteLine("Абонент занят");
-                    ishodClient.Terminal.AbonentEndCall();
+                    outputClient.Terminal.AbonentEndCall();
                     call.FailCall(CallResult.CalledSubscriberBusy);
                     break;
                 case PortState.Disconnected: Console.WriteLine("Абонента с таким номером нет");
                     call.FailCall(CallResult.NoConected);
-                    ishodClient.Terminal.AbonentEndCall();
+                    outputClient.Terminal.AbonentEndCall();
                     break;
             }
             CallList.Add(call);
         }
-
-        public void AnswerCallHandler(int ishod, int vhod)
+        /// <summary>
+        /// Обработчик события ответа на звонок
+        /// </summary>
+        /// <param name="output">Номер вызывающего</param>
+        /// <param name="input">Номер вызываемого</param>
+        public void AnswerCallHandler(int output, int input)
         {
             Call call = new Call();
             call.StartTalk();
         }
-
+        /// <summary>
+        /// Обработчик события завершения вызова
+        /// </summary>
+        /// <param name="output">Номер вызывающего</param>
+        /// <param name="input">Номер  вызываемого</param>
         public void EndCallHandler(int output, int input)
         {
             Client vhodClient = FindClientByPhoneNumber(input);

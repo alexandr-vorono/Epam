@@ -17,5 +17,32 @@ namespace ATS
         {
             return tariffes.Last(x => x.CreationDate <= date);
         }
+        public bool AddTariff(Tariff tariff)
+        {
+            if (tariffes.Last().CreationDate.AddMonths(1) < tariff.CreationDate)
+            {
+                tariffes.Add(tariff);
+                return true;
+            }
+            else
+                return false;
+        }
+        /// <summary>
+        /// Метод возвращает текущий тарифный план.
+        /// </summary>
+        /// <returns>Тарифный план.</returns>
+        public Tariff GetCurrentTariff()
+        {
+            return tariffes.Last();
+        }
+
+        /// <summary>
+        /// Метод возвращает массив тарифных планов абонента.
+        /// </summary>
+        /// <returns>Массив тарифных планов.</returns>
+        public List<Tariff> GetAllTariffes()
+        {
+            return tariffes;
+        }
     }
 }

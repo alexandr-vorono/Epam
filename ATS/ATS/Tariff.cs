@@ -20,5 +20,14 @@ namespace ATS
             this.MinuteCost = minuteCost;
             this.MonthCost = monthCost;
         }
+        /// <summary>
+        /// Метод возвращает стоимость дня изходя из абонентской платы.
+        /// </summary>
+        /// <param name="daysInMonth">Количество дней в месяце.</param>
+        /// <returns>Стоимость дня.</returns>
+        public virtual double DayCost(int daysInMonth)
+        {
+            return (double)MonthCost / daysInMonth;
+        }
     }
 }
