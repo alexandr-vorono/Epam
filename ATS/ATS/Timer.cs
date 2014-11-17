@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace ATS
 {
+    //Класс реализует  ускоренное протекание времени
     public class Timer
     {
         private DateTime time;
