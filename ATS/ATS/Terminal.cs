@@ -28,6 +28,7 @@ namespace ATS
         public event ToCall CallToEven;
         //Событие ответа на звонок
         public delegate void AnswerCallDelegate(int output, int input);
+        public EventHandler<EventArgs>
         public event AnswerCallDelegate AnswerCallToEvent;
         //Событие завершения звонка
         public delegate void EndCallDelegate(int output, int input);
@@ -63,7 +64,7 @@ namespace ATS
         /// </summary>
         /// <param name="output">Номер вызывающего</param>
         /// <param name="input">Номер вызываемого</param>
-        public virtual void OnCallToEvent(int output, int input)
+        protected virtual void OnCallToEvent(int output, int input)
         {
             if (CallToEven != null)
             {
