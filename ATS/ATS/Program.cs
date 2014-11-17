@@ -14,7 +14,7 @@ namespace ATS
             myTimer = new Timer(DateTime.Now.AddDays(-100), 10, 1000);
             Random random = new Random();
 
-            Console.SetWindowSize(120, 40);
+            Console.SetWindowSize(140, 40);
             ATS ats = new ATS();
             for (int i = 0; i < 10; i++)
             {
@@ -26,7 +26,7 @@ namespace ATS
                 ats.ClientsList.Last().Terminal.EndCallToEvent += ats.EndCallHandler;
             }
 
-            for (int i = 0; i < 1000; i++)
+            for (int i = 0; i < 10000; i++)
             {
                 int n = random.Next(1, 11);
                 int from = random.Next(0, 10);

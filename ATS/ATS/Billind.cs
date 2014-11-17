@@ -21,6 +21,7 @@ namespace ATS
                 from x in callList
                 where x.IsEndCall && (x.FromClient.Terminal.Port.PhoneNumber == client.Terminal.Port.PhoneNumber ||
                       x.ToClient.Terminal.Port.PhoneNumber == client.Terminal.Port.PhoneNumber)
+                      && x.StartCallTime>=nowTime.AddMonths(-1)
                 select new
                 {
                     OpponentNumber =
@@ -41,13 +42,14 @@ namespace ATS
             int allCost = 0;
             foreach (var x in allCalls)
             {
+
                 Console.WriteLine("{0}\t{1}\t   {2}\t{3}\t{4}\t{5}\t\t{6}", x.StartTalkTime, x.OpponentNumber, x.TalkDuration, x.EndCallTime, x.IsOutputCall ? "Исходящий" : "Входящий", x.AllCostTalk, x.CallResult );
                 allCost += x.AllCostTalk;
             }
             int monthlyFee = 0;
             while (startContractTime< nowTime)
             {
-                if (startContractTime > client.Contract.LastChangeTime)
+                if (startContractTime > client.Contract.LastChangeTime && startContractTime > nowTime.AddMonths(-1))
                     monthlyFee += (int)client.Contract.TariffHistory.GetTariffByDate(startContractTime).DayCost(DateTime.DaysInMonth(startContractTime.Year, startContractTime.Month));
                 startContractTime = startContractTime.AddDays(1);
             }
