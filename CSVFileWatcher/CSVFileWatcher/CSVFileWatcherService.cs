@@ -83,7 +83,7 @@ namespace CSVFileWatcher
             Console.WriteLine("Обработка файла:"+e.FullPath);
             if (File.Exists(e.FullPath))
             {
-                ThreadPool.QueueUserWorkItem(ProcessDataFile, e.FullPath);
+                Task.Factory.StartNew(ProcessDataFile, e.FullPath);
             }
         }
         private void ProcessDataFile(object parameters)
