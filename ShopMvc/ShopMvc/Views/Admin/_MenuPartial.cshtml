@@ -1,0 +1,32 @@
+﻿
+
+
+<div id="w">
+    <nav>
+      <ul id="ddmenu">
+        <li>@Html.ActionLink("Главная", "Index", "Home")</li>
+          <li><a href="" class="mark">Менеджер</a>
+          @*<li>@Html.ActionLink("Добавить менеджера", "AddManager", "Admin")<li>*@
+              <i class="triangle"></i>
+              <ul class="sub-nav">
+                  <li> @Html.ActionLink("Показать всех", "Manager", "Admin")</li>
+                  <li>@Html.ActionLink("Добавить менеджера", "AddManager", "Admin")</li>
+              </ul>
+          </li>
+          <li><a href="" class="mark">Клиент</a>
+              <i class="triangle"></i>
+              <ul class="sub-nav">
+                  <li> @Html.ActionLink("Показать всех", "Clients", "Admin")</li>
+                  <li>@Html.ActionLink("Добавить клиента", "AddClient", "Admin")</li>
+              </ul>
+          </li>
+          <li><a href="" class="mark">Товар</a>
+              <i class="triangle"></i>
+              <ul class="sub-nav">
+                  <li> @Html.ActionLink("Показать все", "Items", "Admin")</li>
+                  <li>@Html.ActionLink("Добавить товар", "AddItem", "Admin")</li>
+              </ul>
+          </li>
+     </ul>
+    </nav>
+  </div>

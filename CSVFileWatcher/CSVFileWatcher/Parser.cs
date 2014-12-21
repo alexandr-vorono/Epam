@@ -9,7 +9,14 @@ using DBLayer;
 namespace CSVFileWatcher
 {
     class Parser
-    { public List<Order> ParseList(string fileName)
+    {
+
+        /// <summary>
+        /// Метод парсит строки файла
+        /// </summary>
+        /// <param name="fileName">Название файла</param>
+        /// <returns>Заказ</returns>
+        public List<Order> ParseList(string fileName)
         {
             List<Order> order = new List<Order>();
             DateTime time;

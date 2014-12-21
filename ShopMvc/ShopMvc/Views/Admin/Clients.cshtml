@@ -1,0 +1,92 @@
+﻿@{
+    ViewBag.Title = "Все клиенты";
+}
+
+@section scripts {
+    <script src="~/Scripts/jqwidgets/jqxcore.js"></script>
+    <script src="~/Scripts/jqwidgets/jqxchart.js"></script>
+    <script src="~/Scripts/jqwidgets/jqxdata.js"></script>
+    <script src="~/Scripts/jqwidgets/jqxbuttons.js"></script>
+    <script src="~/Scripts/jqwidgets/jqxlistbox.js"></script>
+    <script src="~/Scripts/jqwidgets/jqxscrollbar.js"></script>
+    <script src="~/Scripts/jqwidgets/jqxmenu.js"></script>
+    <script src="~/Scripts/jqwidgets/jqxdropdownlist.js"></script>
+    <script src="~/Scripts/jqwidgets/jqxgrid.js"></script>
+    <script src="~/Scripts/jqwidgets/jqxgrid.filter.js"></script>
+    <script src="~/Scripts/jqwidgets/jqxgrid.sort.js"></script>
+    <script src="~/Scripts/jqwidgets/jqxgrid.pager.js"></script>
+    <script src="~/Scripts/jqwidgets/jqxgrid.selection.js"></script>
+    <script src="~/Scripts/jqwidgets/jqxpanel.js"></script>
+    <script src="~/Scripts/jqwidgets/jqxcheckbox.js"></script>
+    <script src="~/Scripts/jqwidgets/jqxgrid.columnsresize.js"></script>
+    <script src="~/Scripts/jqwidgets/jqxdatetimeinput.js"></script>
+    <script src="~/Scripts/jqwidgets/jqxnumberinput.js"></script>
+    <script src="~/Scripts/jqwidgets/jqxwindow.js"></script>
+    <script src="~/Scripts/jqwidgets/jqxcalendar.js"></script>
+    <script src="~/Scripts/jqwidgets/jqxtooltip.js"></script>
+    <link href="~/Content/jqx.energyblue.css" rel="stylesheet" />
+    <link href="~/Content/jqx.base.css" rel="stylesheet" />
+}
+<script type="text/javascript">
+    $(document).ready(function () {
+        var theme = "";
+        var source =
+        {
+            datatype: "json",
+            datafields: [
+                { name: 'id' },
+                { name: 'firstName' },
+                { name: 'lastName' },
+                { name: 'middleName' },
+                { name: 'adress'},
+                { name: 'birthDay', type: 'date' },
+                { name: 'ordersCount' },
+                { name: 'amount' }
+            ],
+            url: '/Admin/GetClientsList',
+            root: 'Rows',
+            filter: function () {
+                $("#jqxgrid").jqxGrid('updatebounddata', 'filter');
+            },
+            sort: function () {
+                $("#jqxgrid").jqxGrid('updatebounddata', 'sort');
+            },
+            beforeprocessing: function (data) {
+                source.totalrecords = data.TotalRows;
+            }
+        };
+
+        var dataAdapter = new $.jqx.dataAdapter(source);
+        $("#jqxgrid").jqxGrid(
+        {
+            width: 860,
+            source: dataAdapter,
+            theme: theme,
+            selectionmode: 'multiplerowsextended',
+            sortable: true,
+            filterable: true,
+            showfilterrow: true,
+            pageable: true,
+            autoheight: true,
+            columnsresize: true,
+            virtualmode: true,
+            rendergridrows: function (obj) {
+                return obj.data;
+            },
+            columns: [
+              { text: 'Фамилия', datafield: 'lastName', width: 180 },
+              { text: 'Имя', datafield: 'firstName', width: 180 },
+              { text: 'Отчество', datafield: 'middleName', width: 150 },
+              { text: 'Адресс', datafield: 'adress', width: 140, filtertype: 'adress' },
+              { text: 'День рождения', datafield: 'birthDay', width: 100, cellsformat: 'dd/MM/yyyy', filtertype: 'date' },
+              { text: 'Кол-во', datafield: 'ordersCount', width: 60, filtertype: 'ordersCount' },
+              { text: 'Сумма', datafield: 'amount', width: 50, filtertype: 'amount' }
+            ]
+        });
+
+    });
+                </script>
+
+
+                <div id="jqxgrid">
+                </div>

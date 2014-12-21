@@ -1,0 +1,74 @@
+﻿@{
+    ViewBag.Title = "Главная";
+}
+@section scripts {
+    <script src="~/Scripts/jqwidgets/jqxcore.js"></script>
+    <script src="~/Scripts/jqwidgets/jqxchart.js"></script>
+    <script src="~/Scripts/jqwidgets/jqxdata.js"></script>
+    <script src="~/Scripts/jqwidgets/jqxbuttons.js"></script>
+    <script src="~/Scripts/jqwidgets/jqxlistbox.js"></script>
+    <script src="~/Scripts/jqwidgets/jqxscrollbar.js"></script>
+    <script src="~/Scripts/jqwidgets/jqxmenu.js"></script>
+    <script src="~/Scripts/jqwidgets/jqxdropdownlist.js"></script>
+    <script src="~/Scripts/jqwidgets/jqxgrid.js"></script>
+    <script src="~/Scripts/jqwidgets/jqxgrid.filter.js"></script>
+    <script src="~/Scripts/jqwidgets/jqxgrid.sort.js"></script>
+    <script src="~/Scripts/jqwidgets/jqxgrid.pager.js"></script>
+    <script src="~/Scripts/jqwidgets/jqxgrid.selection.js"></script>
+    <script src="~/Scripts/jqwidgets/jqxpanel.js"></script>
+    <script src="~/Scripts/jqwidgets/jqxcheckbox.js"></script>
+    <script src="~/Scripts/jqwidgets/jqxgrid.columnsresize.js"></script>
+    <script src="~/Scripts/jqwidgets/jqxdatetimeinput.js"></script>
+    <script src="~/Scripts/jqwidgets/jqxnumberinput.js"></script>
+    <script src="~/Scripts/jqwidgets/jqxwindow.js"></script>
+    <script src="~/Scripts/jqwidgets/jqxcalendar.js"></script>
+    <script src="~/Scripts/jqwidgets/jqxtooltip.js"></script>
+    <link href="~/Content/jqx.energyblue.css" rel="stylesheet" />
+    <link href="~/Content/jqx.base.css" rel="stylesheet" />
+}
+<script type="text/javascript">
+                    $(document).ready(function () {
+                        var theme = "";
+                        var source =
+                        {
+                            datatype: "json",
+                            datafields: [
+                                { name: 'orderid' },
+                                { name: 'clientid' },
+                                { name: 'itemid' },
+                                { name: 'clientName', type: 'string' },
+                                { name: 'itemName', type: 'string' },
+                                { name: 'orderTime', type: 'date' },
+                                { name: 'itemCount', type: 'number' },
+                                { name: 'amount', type: 'float' }
+                            ],
+                            url: '/Manager/GetOrdersList'
+                        };
+
+                        var dataAdapter = new $.jqx.dataAdapter(source);
+                        $("#jqxgrid").jqxGrid(
+                        {
+                            width: 860,
+                            source: dataAdapter,
+                            theme: theme,
+                            selectionmode: 'multiplerowsextended',
+                            sortable: true,
+                            filterable: true,
+                            pageable: true,
+                            autoheight: true,
+                            columnsresize: true,
+                            columns: [
+                              { text: 'Клиент', datafield: 'clientName', width: 250 },
+                              { text: 'Товар', datafield: 'itemName', width: 200 },
+                              { text: 'Время заказа', datafield: 'orderTime', width: 100, cellsformat: 'dd/MM/yyyy' },
+                              { text: 'Количество товара', datafield: 'itemCount', width: 140 },
+                              { text: 'Сумма заказа', datafield: 'amount', width: 170 }
+                            ]
+                        });
+
+                    });
+                </script>
+
+Мои заказы
+                <div id="jqxgrid">
+                </div>

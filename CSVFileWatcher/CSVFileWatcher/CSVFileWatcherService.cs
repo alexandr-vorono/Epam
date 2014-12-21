@@ -68,16 +68,19 @@ namespace CSVFileWatcher
             }
 
         }
+
+        //Запуск службы
         protected override void OnStart(string[] args)
         {
             this.Start();
         }
-
+        //ОСтановка службы
         protected override void OnStop()
         {
             this.fileWatcher.EnableRaisingEvents = false;
             this.fileWatcher.Dispose();
         }
+        //Обработка события создания нового файла
         private void OnFileCreate(object sender, FileSystemEventArgs e)
         {
             Console.WriteLine("Обработка файла:"+e.FullPath);
@@ -86,6 +89,7 @@ namespace CSVFileWatcher
                 Task.Factory.StartNew(ProcessDataFile, e.FullPath);
             }
         }
+        //Обработка нового файла
         private void ProcessDataFile(object parameters)
         {
             if (parameters is string)
@@ -93,6 +97,7 @@ namespace CSVFileWatcher
                 string fileName = parameters as string;
                 Parser parser = new Parser();
                 DBModelContainer container = new DBModelContainer(); 
+                
                 if (container.CheckFileName(fileName) == false)
                 {
                     try

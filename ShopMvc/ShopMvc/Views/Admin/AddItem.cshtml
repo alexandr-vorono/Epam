@@ -1,0 +1,35 @@
+﻿@model ShopMvc.Models.ItemModels
+@{
+    ViewBag.Title = "Добавление товара";
+}
+
+
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary()
+    
+     @ViewBag.RegisterSucess
+
+    
+    
+    <fieldset>
+        <legend>Registration Form</legend>
+        <ol>
+            <li>
+                @Html.LabelFor(m => m.Name)
+                @Html.TextBoxFor(m => m.Name)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.Description)
+                @Html.TextBoxFor(m => m.Description)
+            </li>
+          
+        </ol>
+        <input type="submit" value="Добавить" />
+    </fieldset>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

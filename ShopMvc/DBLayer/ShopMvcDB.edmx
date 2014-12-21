@@ -1,0 +1,425 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="ShopMvcDB.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="ShopMvcDBStoreContainer">
+    <EntitySet Name="ClientSet" EntityType="ShopMvcDB.Store.ClientSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ManagerSet" EntityType="ShopMvcDB.Store.ManagerSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="UserSet" EntityType="ShopMvcDB.Store.UserSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="User1Set" EntityType="ShopMvcDB.Store.User1Set" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="User2Set" EntityType="ShopMvcDB.Store.User2Set" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="OrderSet" EntityType="ShopMvcDB.Store.OrderSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ItemSet" EntityType="ShopMvcDB.Store.ItemSet" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="OrderItem" Association="ShopMvcDB.Store.OrderItem">
+      <End Role="Order" EntitySet="OrderSet" />
+      <End Role="Item" EntitySet="ItemSet" />
+    </AssociationSet>
+    <AssociationSet Name="ManagerOrder" Association="ShopMvcDB.Store.ManagerOrder">
+      <End Role="Order" EntitySet="OrderSet" />
+      <End Role="Manager" EntitySet="ManagerSet" />
+    </AssociationSet>
+    <AssociationSet Name="OrderClient" Association="ShopMvcDB.Store.OrderClient">
+      <End Role="Order" EntitySet="OrderSet" />
+      <End Role="Client" EntitySet="ClientSet" />
+    </AssociationSet>
+    <AssociationSet Name="UserClient" Association="ShopMvcDB.Store.UserClient">
+      <End Role="Client" EntitySet="ClientSet" />
+      <End Role="User" EntitySet="UserSet" />
+    </AssociationSet>
+    <AssociationSet Name="ManagerUser" Association="ShopMvcDB.Store.ManagerUser">
+      <End Role="Manager" EntitySet="ManagerSet" />
+      <End Role="User" EntitySet="UserSet" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="ClientSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FirstName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="LastName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="MiddleName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Adress" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="BirthDay" Type="datetime" Nullable="true" />
+    <Property Name="User_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ManagerSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FirstName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="LastName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="MiddleName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="EmploymentDate" Type="datetime" Nullable="false" />
+    <Property Name="User_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UserSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="User1Set">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="User2Set">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="OrderSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ClientId" Type="int" Nullable="false" />
+    <Property Name="ManagerId" Type="int" Nullable="false" />
+    <Property Name="ItemId" Type="int" Nullable="false" />
+    <Property Name="OrderTime" Type="datetime" Nullable="false" />
+    <Property Name="Amount" Type="float" Nullable="false" />
+    <Property Name="ItemCount" Type="int" Nullable="false" />
+    <Property Name="Item_Id" Type="int" Nullable="false" />
+    <Property Name="Manager_Id" Type="int" Nullable="false" />
+    <Property Name="Client_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ItemSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Description" Type="nvarchar(max)" Nullable="true" />
+  </EntityType>
+  <Association Name="OrderItem">
+    <End Role="Order" Type="ShopMvcDB.Store.OrderSet" Multiplicity="*" />
+    <End Role="Item" Type="ShopMvcDB.Store.ItemSet" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Item">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="Item_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ManagerOrder">
+    <End Role="Order" Type="ShopMvcDB.Store.OrderSet" Multiplicity="*" />
+    <End Role="Manager" Type="ShopMvcDB.Store.ManagerSet" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Manager">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="Manager_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="OrderClient">
+    <End Role="Order" Type="ShopMvcDB.Store.OrderSet" Multiplicity="*" />
+    <End Role="Client" Type="ShopMvcDB.Store.ClientSet" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Client">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="Client_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="UserClient">
+    <End Role="Client" Type="ShopMvcDB.Store.ClientSet" Multiplicity="*" />
+    <End Role="User" Type="ShopMvcDB.Store.UserSet" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Client">
+        <PropertyRef Name="User_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ManagerUser">
+    <End Role="Manager" Type="ShopMvcDB.Store.ManagerSet" Multiplicity="*" />
+    <End Role="User" Type="ShopMvcDB.Store.UserSet" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Manager">
+        <PropertyRef Name="User_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="ShopMvcDB" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="ShopMvcDBContainer" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ClientSet" EntityType="ShopMvcDB.Client" />
+          <EntitySet Name="ManagerSet" EntityType="ShopMvcDB.Manager" />
+          <EntitySet Name="UserSet" EntityType="ShopMvcDB.User" />
+          <EntitySet Name="User1Set" EntityType="ShopMvcDB.User1" />
+          <EntitySet Name="User2Set" EntityType="ShopMvcDB.User2" />
+          <EntitySet Name="OrderSet" EntityType="ShopMvcDB.Order" />
+          <EntitySet Name="ItemSet" EntityType="ShopMvcDB.Item" />
+          <AssociationSet Name="OrderItem" Association="ShopMvcDB.OrderItem">
+            <End Role="Order" EntitySet="OrderSet" />
+            <End Role="Item" EntitySet="ItemSet" />
+          </AssociationSet>
+          <AssociationSet Name="ManagerOrder" Association="ShopMvcDB.ManagerOrder">
+            <End Role="Order" EntitySet="OrderSet" />
+            <End Role="Manager" EntitySet="ManagerSet" />
+          </AssociationSet>
+          <AssociationSet Name="OrderClient" Association="ShopMvcDB.OrderClient">
+            <End Role="Order" EntitySet="OrderSet" />
+            <End Role="Client" EntitySet="ClientSet" />
+          </AssociationSet>
+          <AssociationSet Name="UserClient" Association="ShopMvcDB.UserClient">
+            <End Role="Client" EntitySet="ClientSet" />
+            <End Role="User" EntitySet="UserSet" />
+          </AssociationSet>
+          <AssociationSet Name="ManagerUser" Association="ShopMvcDB.ManagerUser">
+            <End Role="Manager" EntitySet="ManagerSet" />
+            <End Role="User" EntitySet="UserSet" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Client">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="FirstName" Nullable="false" />
+          <Property Type="String" Name="LastName" Nullable="false" />
+          <Property Type="String" Name="MiddleName" Nullable="false" />
+          <Property Type="String" Name="Adress" Nullable="true" />
+          <Property Type="DateTime" Name="BirthDay" Nullable="true" />
+          <NavigationProperty Name="Order" Relationship="ShopMvcDB.OrderClient" FromRole="Client" ToRole="Order" />
+          <NavigationProperty Name="User" Relationship="ShopMvcDB.UserClient" FromRole="Client" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Manager">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="FirstName" Nullable="false" />
+          <Property Type="String" Name="LastName" Nullable="false" />
+          <Property Type="String" Name="MiddleName" Nullable="false" />
+          <Property Type="DateTime" Name="EmploymentDate" Nullable="false" />
+          <NavigationProperty Name="Order" Relationship="ShopMvcDB.ManagerOrder" FromRole="Manager" ToRole="Order" />
+          <NavigationProperty Name="User" Relationship="ShopMvcDB.ManagerUser" FromRole="Manager" ToRole="User" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="UserName" Nullable="false" />
+          <NavigationProperty Name="Client" Relationship="ShopMvcDB.UserClient" FromRole="User" ToRole="Client" />
+          <NavigationProperty Name="Manager" Relationship="ShopMvcDB.ManagerUser" FromRole="User" ToRole="Manager" />
+        </EntityType>
+        <EntityType Name="User1">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="UserName" Nullable="false" />
+        </EntityType>
+        <EntityType Name="User2">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="UserName" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="ClientId" Nullable="false" />
+          <Property Type="Int32" Name="ManagerId" Nullable="false" />
+          <Property Type="Int32" Name="ItemId" Nullable="false" />
+          <Property Type="DateTime" Name="OrderTime" Nullable="false" />
+          <Property Type="Double" Name="Amount" Nullable="false" />
+          <Property Type="Int32" Name="ItemCount" Nullable="false" />
+          <NavigationProperty Name="Item" Relationship="ShopMvcDB.OrderItem" FromRole="Order" ToRole="Item" />
+          <NavigationProperty Name="Manager" Relationship="ShopMvcDB.ManagerOrder" FromRole="Order" ToRole="Manager" />
+          <NavigationProperty Name="Client" Relationship="ShopMvcDB.OrderClient" FromRole="Order" ToRole="Client" />
+        </EntityType>
+        <EntityType Name="Item">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" />
+          <Property Type="String" Name="Description" Nullable="true" />
+          <NavigationProperty Name="Order" Relationship="ShopMvcDB.OrderItem" FromRole="Item" ToRole="Order" />
+        </EntityType>
+        <Association Name="OrderItem">
+          <End Type="ShopMvcDB.Order" Role="Order" Multiplicity="*" />
+          <End Type="ShopMvcDB.Item" Role="Item" Multiplicity="1" />
+        </Association>
+        <Association Name="ManagerOrder">
+          <End Type="ShopMvcDB.Order" Role="Order" Multiplicity="*" />
+          <End Type="ShopMvcDB.Manager" Role="Manager" Multiplicity="1" />
+        </Association>
+        <Association Name="OrderClient">
+          <End Type="ShopMvcDB.Order" Role="Order" Multiplicity="*" />
+          <End Type="ShopMvcDB.Client" Role="Client" Multiplicity="1" />
+        </Association>
+        <Association Name="UserClient">
+          <End Type="ShopMvcDB.Client" Role="Client" Multiplicity="0..1" />
+          <End Type="ShopMvcDB.User" Role="User" Multiplicity="1" />
+        </Association>
+        <Association Name="ManagerUser">
+          <End Type="ShopMvcDB.Manager" Role="Manager" Multiplicity="0..1" />
+          <End Type="ShopMvcDB.User" Role="User" Multiplicity="1" />
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ShopMvcDBStoreContainer" CdmEntityContainer="ShopMvcDBContainer">
+    <EntitySetMapping Name="ClientSet">
+      <EntityTypeMapping TypeName="IsTypeOf(ShopMvcDB.Client)">
+        <MappingFragment StoreEntitySet="ClientSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+          <ScalarProperty Name="Adress" ColumnName="Adress" />
+          <ScalarProperty Name="BirthDay" ColumnName="BirthDay" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ManagerSet">
+      <EntityTypeMapping TypeName="IsTypeOf(ShopMvcDB.Manager)">
+        <MappingFragment StoreEntitySet="ManagerSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+          <ScalarProperty Name="EmploymentDate" ColumnName="EmploymentDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserSet">
+      <EntityTypeMapping TypeName="IsTypeOf(ShopMvcDB.User)">
+        <MappingFragment StoreEntitySet="UserSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="User1Set">
+      <EntityTypeMapping TypeName="IsTypeOf(ShopMvcDB.User1)">
+        <MappingFragment StoreEntitySet="User1Set">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="User2Set">
+      <EntityTypeMapping TypeName="IsTypeOf(ShopMvcDB.User2)">
+        <MappingFragment StoreEntitySet="User2Set">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OrderSet">
+      <EntityTypeMapping TypeName="IsTypeOf(ShopMvcDB.Order)">
+        <MappingFragment StoreEntitySet="OrderSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+          <ScalarProperty Name="ManagerId" ColumnName="ManagerId" />
+          <ScalarProperty Name="ItemId" ColumnName="ItemId" />
+          <ScalarProperty Name="OrderTime" ColumnName="OrderTime" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="ItemCount" ColumnName="ItemCount" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ItemSet">
+      <EntityTypeMapping TypeName="IsTypeOf(ShopMvcDB.Item)">
+        <MappingFragment StoreEntitySet="ItemSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="OrderItem" TypeName="ShopMvcDB.OrderItem" StoreEntitySet="OrderSet">
+      <EndProperty Name="Item">
+        <ScalarProperty Name="Id" ColumnName="Item_Id" />
+      </EndProperty>
+      <EndProperty Name="Order">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="ManagerOrder" TypeName="ShopMvcDB.ManagerOrder" StoreEntitySet="OrderSet">
+      <EndProperty Name="Manager">
+        <ScalarProperty Name="Id" ColumnName="Manager_Id" />
+      </EndProperty>
+      <EndProperty Name="Order">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="OrderClient" TypeName="ShopMvcDB.OrderClient" StoreEntitySet="OrderSet">
+      <EndProperty Name="Client">
+        <ScalarProperty Name="Id" ColumnName="Client_Id" />
+      </EndProperty>
+      <EndProperty Name="Order">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="UserClient" TypeName="ShopMvcDB.UserClient" StoreEntitySet="ClientSet">
+      <EndProperty Name="User">
+        <ScalarProperty Name="Id" ColumnName="User_Id" />
+      </EndProperty>
+      <EndProperty Name="Client">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="ManagerUser" TypeName="ShopMvcDB.ManagerUser" StoreEntitySet="ManagerSet">
+      <EndProperty Name="User">
+        <ScalarProperty Name="Id" ColumnName="User_Id" />
+      </EndProperty>
+      <EndProperty Name="Manager">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
